@@ -1,0 +1,29 @@
+INTC_SYSCONFIG (0x10)
+INTC_SYSCONFIG_SOFTRESET (1 << 1)
+INTC_SYSSTATUS (0x14)
+INTC_SYSSTATUS_RESETDONE (1 << 0)
+INTC_THRESHOLD (0x68)
+INTC_THRESHOLD_PRIORITYTHRESHOLD (0X3F)
+
+GPIO3 62 63 GPIOINT3A GPIOINT3B
+Temos que os numeros de interrupcao
+desses reg sao 62 e 63
+entao9 faremos um deslocamento de 5
+(62 << 5) A
+(63 << 5) B
+
+para descobrir qual valor de n
+do registrador MIR_CLEAR
+
+dividindo 62 por 32, entao o INTC_MIR_CLEAR1
+é o que usaremos 
+
+saber qual bit sera configurado
+usaremoa logica and com 0x1F
+62 em binário é 3E
+
+GPIO_IRQSTATUS_SET_0 (0x34)
+GPIO_IRQSTATUS_SET_1 (0x38)
+
+GPIO_RISINGDETECT  (0x148)
+GPIO_FALLINGDETECT (0x14C)
